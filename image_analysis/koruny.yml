@@ -1,0 +1,36 @@
+1 CZK:
+            value: 1
+            radius: 20
+            ratio: 1
+            count: 0
+      
+2 CZK: 
+            value: 2
+            radius: 21.5
+            ratio: 1.075
+            count: 0
+        
+5 CZK: 
+            value: 5
+            radius: 23
+            ratio: 1.15
+            count: 0
+        
+10 CZK:
+            value": 10
+            radius": 24.5
+            ratio": 1.225
+            count": 0
+        
+20 CZK: 
+            value: 20
+            radius": 26
+            ratio": 1.3
+            count": 0
+      
+50 CZK: 
+            value: 50
+            radius: 27.5
+            ratio: 1.375
+            count: 0
+        
