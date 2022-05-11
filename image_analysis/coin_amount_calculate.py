@@ -40,12 +40,8 @@ def image_resize(coins,width = None, height = None, inter = cv2.INTER_AREA):
     return resized
 
 def detect_coins():
-    
-  
-    # coins = cv2.imread('./input_image/koruny_test.jpg')
+   
     image= image_resize(coins,height=620)
-    # image = cv2.resize(coins, (470,620))
-
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     img = cv2.medianBlur(gray, 7)
     circles = cv2.HoughCircles(
@@ -79,7 +75,6 @@ def detect_coins():
     except:
         print("Problem")
    
-
     return circles
 
 def calculate_amount():
@@ -122,40 +117,6 @@ def calculate_amount():
         },
     }
 
-    indian = {
-        "1 Rs": {
-            "value": 1,
-            "radius": 21.93,
-            "ratio": 1,
-            "count": 0,
-        },
-        "2 Rs": {
-            "value": 2,
-            "radius": 23,
-            "ratio": 1.048,
-            "count": 0,
-        },
-        "5 Rs": {
-            "value": 5,
-            "radius": 25,
-            "ratio": 1.13,
-            "count": 0,
-        },
-        "10 Rs": {
-            "value": 10,
-            "radius": 27,
-            "ratio": 1.231,
-            "count": 0,
-        },
-        "20 Rs": {
-            "value": 20,
-            "radius": 27,
-            "ratio": 1.231,
-            "count": 0,
-        },
-        
-    }
-
     circles = detect_coins()
     radius = []
     coordinates = []
@@ -170,7 +131,7 @@ def calculate_amount():
     total_amount = 0
     try:
         coins_circled = cv2.imread('output_image/coin_amount/koruny_test_Hough.jpg', 1)
-        print("image raed")
+        print("image read")
     except:
         print("image not written")
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -179,26 +140,6 @@ def calculate_amount():
         ratio_to_check = coin[2] / smallest
         coor_x = coin[0]
         coor_y = coin[1]
-
-    #     for india in indian:
-    #         value = indian[india]['value']
-    #         print(india)
-    #         print(ratio_to_check)
-    #         print(indian[india]['ratio'])
-    #         print(abs(ratio_to_check-indian[india]['ratio']))
-    #         print("----------------")
-    #         if abs(ratio_to_check - indian[india]['ratio']) <= tolerance:
-    #             print("yes it is less")
-    #             print(indian[india]['value'])
-    #             indian[india]['count'] += 1
-    #             total_amount += indian[india]['value']
-    #             coins_circled = cv2.putText(coins_circled, str(value), (int(coor_x), int(coor_y)), font, 1,
-    #                         (0, 0, 0), 4)
-
-    # print(f"The total amount is {total_amount} CZK")
-    # for india in indian:
-    #     pieces = indian[india]['count']
-    #     print(f"{india} = {pieces}x")
 
         for koruna in koruny:
             value = koruny[koruna]['value']

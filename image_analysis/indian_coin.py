@@ -70,10 +70,9 @@ def detect_coins():
             (0, 255, 0),
             4,
         )
-    # cv2.imshow('circled',coins_detected)
-    # cv2.waitKey(0)
+   
     try:
-        cv2.imwrite("output_image/coin_amount/koruny_test_Hough.jpg", coins_detected)
+        cv2.imwrite("output_image/coin_amount/detected.jpg", coins_detected)
         print("Image written")
     except:
         print("Problem")
@@ -95,25 +94,6 @@ def calculate_amount():
             "ratio": 1.231,
             "count": 0,
         },
-        # "5 Rs": {
-        #     "value": 5,
-        #     "radius": 23,
-        #     "ratio": 1.048,
-        #     "count": 0,
-        # },
-        # "10 Rs": {
-        #     "value": 10,
-        #     "radius": 27,
-        #     "ratio": 1.231,
-        #     "count": 0,
-        # },
-        # "20 Rs": {
-        #     "value": 20,
-        #     "radius": 27,
-        #     "ratio": 1.231,
-        #     "count": 0,
-        # },
-        
     }
     circles = detect_coins()
     radius = []
@@ -128,7 +108,7 @@ def calculate_amount():
     tolerance = 0.087
     total_amount = 0
     try:
-        coins_circled = cv2.imread('output_image/coin_amount/koruny_test_Hough.jpg', 1)
+        coins_circled = cv2.imread('output_image/coin_amount/detected.jpg', 1)
         print("image raed")
     except:
         print("image not written")
@@ -161,7 +141,7 @@ def calculate_amount():
         pieces = indian[denomination]['count']
         print(f"{denomination} = {pieces}x")
 
-    cv2.imwrite("output_image/coin_amount/koruny_hodnota.jpg", coins_circled)
+    cv2.imwrite("output_image/coin_amount/with_values.jpg", coins_circled)
     cv2.imshow('original',coins_circled)
     cv2.waitKey(0)
 
